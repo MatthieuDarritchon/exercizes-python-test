@@ -30,18 +30,19 @@ def lignes(n, ligne):
 def ligne_unique(n, ligne):
     liste = []
     chaine = ""
-    if ligne == 0:
-        for i in range(2 * n - 1):
-            liste.append(n)
-        for k in range(len(liste)):
-            chaine += "{}".format(liste[k])
-        return chaine
-    else:
-        for j in range(2 * n - 1):
-            liste.append(n - ligne)
-        for a in range(ligne):
-            liste[a] = n - a
-            liste[len(liste) - 1 - a] = n - a
-        for b in range(len(liste)):
-            chaine += "{}".format(liste[b])
-        return chaine
+    for j in range(2 * n - 1):
+        liste.append(n - ligne)
+    for a in range(ligne):
+        liste[a] = n - a
+        liste[len(liste) - 1 - a] = n - a
+    for b in range(len(liste)):
+        chaine += "{}".format(liste[b])
+    return chaine
+
+
+if __name__ == '__main__':
+    n = int(input("n:"))
+    for i in range(n):
+        print(ligne_unique(n, i))
+    for j in range(n - 2, -1, -1):
+        print(ligne_unique(n, j))
